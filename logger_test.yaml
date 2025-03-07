@@ -1,0 +1,25 @@
+appenders:
+  #标准输出
+  - name: "Stdout"
+    output: "Stdout"
+  - name: "logvin"
+    #日志输出目的地
+    output: "rotate:/./logvin.log"
+    maxSize: 100
+    maxAge: 30
+    maxBackups: 30
+    localtime: true
+    compress: true
+loggers:
+  #默认日志记录器
+  root:
+    level: "debug"
+    caller: true
+    appender: "Stdout"
+  #自定义日志记录器
+  logger:
+    - name: "logvin"
+      level: "info"
+      caller: true
+      formatter: "CorvinFormatter"
+      appender: "logvin"
